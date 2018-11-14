@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>Inserindo linhas em uma tabela com JavaScript</title>
+<script language="javascript">
+        // Função responsável por inserir linhas na tabela
+          function inserirLinhaTabela() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var timeValue = "" + ((hours >12) ? hours -12 :hours)
+
+        //Tratamento quantidade de Digitos nos Minutos e exibi se é
+        // dia ou noite, PM, AM.
+
+        timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+        timeValue += (hours >= 12) ? " PM" : " AM"
+        timerRunning = true;
+        mydate = new Date();
+        myday = mydate.getDay();
+        mymonth = mydate.getMonth();
+        myweekday = mydate.getDate();
+        weekday = myweekday;
+        myyear = mydate.getYear();
+
+
+        // Tratamento dos Dias da Semana
+
+        if(myday == 0)
+          day = " Domingo, "
+
+        else if(myday == 1)
+          day = " Segunda Feira, "
+
+        else if(myday == 2)
+          day = " Terça Feira, "
+
+        else if(myday == 3)
+          day = " Quarta Feira, "
+
+        else if(myday == 4)
+          day = " Quinta Feira, "
+
+        else if(myday == 5)
+          day = " Sexta Feira, "
+
+        else if(myday == 6)
+          day = " Sábado, "
+
+        //Tratamento dos Meses
+
+        if(mymonth == 0)
+          month = " de Janeiro "
+
+        else if(mymonth ==1)
+          month = " de Fevereiro "
+
+        else if(mymonth ==2)
+          month = " de Março "
+
+        else if(mymonth ==3)
+          month = " de April "
+
+        else if(mymonth ==4)
+          month = " de Maio "
+
+        else if(mymonth ==5)
+          month = " de Junho "
+
+        else if(mymonth ==6)
+          month = " de Julho "
+
+        else if(mymonth ==7)
+          month = " de Agosto "
+
+        else if(mymonth ==8)
+          month = " de Setembro "
+
+        else if(mymonth ==9)
+          month = " de Outubro "
+
+        else if(mymonth ==10)
+          month = " de Novembro "
+
+        else if(mymonth ==11)
+          month = " de Dezembro "
+
+
+
+            // Captura a referência da tabela com id “minhaTabela”
+            var table = document.getElementById("minhaTabela");
+            // Captura a quantidade de linhas já existentes na tabela
+            var numOfRows = table.rows.length;
+            // Captura a quantidade de colunas da última linha da tabela
+            var numOfCols = table.rows[numOfRows-1].cells.length;
+
+            // Insere uma linha no fim da tabela.
+            var newRow = table.insertRow(numOfRows);
+
+            // Faz um loop para criar as colunas
+            for (var j = 0; j < numOfCols; j++) {
+                // Insere uma coluna na nova linha
+                newCell = newRow.insertCell(j);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = "Tag "+ timeValue + day ;
+            }
+
+        }
+</script>
+</head>
+<body>
+        <!-- Tabela simples contendo linhas e colunas -->
+        <table id="minhaTabela" border="1">
+            <tr>
+                <td>
+                    tag     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Hora    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   Data
+                </td>
+
+            </tr>
+
+
+        </table>
+        <!-- Este botão quando acionado irá chamar a função responsável em inserir a linha na tabela -->
+        <input type="button" value="Inserir Linha" onclick="inserirLinhaTabela()"  />
+</body>
+</html>
